@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e0768f7d2d7f403093dba151b781bede" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="GuardenDBModel.tblAnswer" Width="1.5" PointX="5.875" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GuardenDBModel.tblArea" Width="1.5" PointX="3.125" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GuardenDBModel.tblArea_Photo_Archive" Width="1.5" PointX="5.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GuardenDBModel.tblPlant" Width="1.5" PointX="5.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GuardenDBModel.tblPlant_Photo_Archive" Width="1.5" PointX="8.125" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GuardenDBModel.tblQuestion" Width="1.5" PointX="8.625" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GuardenDBModel.tblResponse" Width="1.5" PointX="2.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GuardenDBModel.tblUser" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GuardenDBModel.tblUser_Preferred_Categories" Width="1.5" PointX="0.5" PointY="11.625" IsExpanded="true" />
+        <AssociationConnector Association="GuardenDBModel.FK__tblAnswer__Quest__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="GuardenDBModel.FK__tblAnswer__User___4316F928" ManuallyRouted="true" >
+          <ConnectorPoint PointX="2.15625" PointY="10.835999348958334" />
+          <ConnectorPoint PointX="2.15625" PointY="11.762637093098959" />
+          <ConnectorPoint PointX="3.7163825638915511" PointY="11.762637093098959" />
+          <ConnectorPoint PointX="3.7163825638915511" PointY="13.643992513020834" />
+          <ConnectorPoint PointX="5.875" PointY="13.643992513020834" />
+        </AssociationConnector>
+        <AssociationConnector Association="GuardenDBModel.FK__tblRespon__Answe__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="GuardenDBModel.FK__tblArea__User_ID__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="GuardenDBModel.FK__tblArea_P__Area___38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="GuardenDBModel.FK__tblPlant__Area_I__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="GuardenDBModel.FK__tblPlant___Plant__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="GuardenDBModel.FK__tblQuesti__User___403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="GuardenDBModel.FK__tblRespon__Quest__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="GuardenDBModel.FK__tblRespon__User___46E78A0C" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="GuardenDBModel.FK__tblUser_P__User___24927208" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

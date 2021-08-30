@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GuardenDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblAnswer">
+    <Key>
+      <PropertyRef Name="Answer_ID" />
+    </Key>
+    <Property Name="Answer_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Answer_Content" Type="nvarchar" MaxLength="255" />
+    <Property Name="Answer_Votes" Type="int" />
+    <Property Name="User_ID" Type="int" />
+    <Property Name="Question_ID" Type="int" />
+    <Property Name="Answer_Photo" Type="varchar(max)" />
+    <Property Name="Time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblArea">
+    <Key>
+      <PropertyRef Name="Area_ID" />
+    </Key>
+    <Property Name="Area_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Area_Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Area_Location" Type="geography" />
+    <Property Name="User_ID" Type="int" />
+    <Property Name="sunExposure" Type="nvarchar" MaxLength="50" />
+    <Property Name="isInDoor" Type="bit" />
+    <Property Name="Clicks" Type="int" />
+  </EntityType>
+  <EntityType Name="tblArea_Photo_Archive">
+    <Key>
+      <PropertyRef Name="Photo_ID" />
+    </Key>
+    <Property Name="Area_Photo" Type="varchar(max)" Nullable="false" />
+    <Property Name="Area_ID" Type="int" />
+    <Property Name="Photo_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblPlant">
+    <Key>
+      <PropertyRef Name="Plant_ID" />
+    </Key>
+    <Property Name="Plant_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Plant_Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Plant_Category" Type="nvarchar" MaxLength="255" />
+    <Property Name="Plant_Lifecycle_Level" Type="nvarchar" MaxLength="255" />
+    <Property Name="Area_ID" Type="int" />
+    <Property Name="Clicks" Type="int" />
+    <Property Name="LastWatering" Type="datetime" />
+    <Property Name="PlantWaterCycle" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblPlant_Photo_Archive">
+    <Key>
+      <PropertyRef Name="Photo_ID" />
+    </Key>
+    <Property Name="Plant_Photo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Plant_ID" Type="int" />
+    <Property Name="Photo_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dateOfCreate" Type="date" />
+    <Property Name="LifeCycle" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblQuestion">
+    <Key>
+      <PropertyRef Name="Question_ID" />
+    </Key>
+    <Property Name="Question_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Question_Content" Type="nvarchar" MaxLength="255" />
+    <Property Name="Question_Votes" Type="int" />
+    <Property Name="User_ID" Type="int" />
+    <Property Name="Question_Photo" Type="varchar(max)" />
+    <Property Name="Time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblResponse">
+    <Key>
+      <PropertyRef Name="Response_ID" />
+    </Key>
+    <Property Name="Response_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Response_Content" Type="nvarchar" MaxLength="255" />
+    <Property Name="User_ID" Type="int" />
+    <Property Name="Question_ID" Type="int" />
+    <Property Name="Answer_ID" Type="int" />
+    <Property Name="Time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Rank" Type="nvarchar" MaxLength="255" />
+    <Property Name="Preferred_Watering_Timing" Type="int" />
+    <Property Name="OTP" Type="int" />
+    <Property Name="Age" Type="int" />
+    <Property Name="ProfileImg" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="tblUser_Preferred_Categories">
+    <Key>
+      <PropertyRef Name="Category_ID" />
+    </Key>
+    <Property Name="Category_Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="User_ID" Type="int" />
+    <Property Name="Category_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__tblAnswer__Quest__1A14E395">
+    <End Role="tblQuestion" Type="Self.tblQuestion" Multiplicity="0..1" />
+    <End Role="tblAnswer" Type="Self.tblAnswer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblQuestion">
+        <PropertyRef Name="Question_ID" />
+      </Principal>
+      <Dependent Role="tblAnswer">
+        <PropertyRef Name="Question_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblAnswer__User___1920BF5C">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+    <End Role="tblAnswer" Type="Self.tblAnswer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblAnswer">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblArea__User_ID__07020F21">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+    <End Role="tblArea" Type="Self.tblArea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblArea">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblArea_P__Area___300424B4">
+    <End Role="tblArea" Type="Self.tblArea" Multiplicity="0..1" />
+    <End Role="tblArea_Photo_Archive" Type="Self.tblArea_Photo_Archive" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblArea">
+        <PropertyRef Name="Area_ID" />
+      </Principal>
+      <Dependent Role="tblArea_Photo_Archive">
+        <PropertyRef Name="Area_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblPlant___Plant__37A5467C">
+    <End Role="tblPlant" Type="Self.tblPlant" Multiplicity="0..1" />
+    <End Role="tblPlant_Photo_Archive" Type="Self.tblPlant_Photo_Archive" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPlant">
+        <PropertyRef Name="Plant_ID" />
+      </Principal>
+      <Dependent Role="tblPlant_Photo_Archive">
+        <PropertyRef Name="Plant_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblPlant__Area_I__0DAF0CB0">
+    <End Role="tblArea" Type="Self.tblArea" Multiplicity="0..1" />
+    <End Role="tblPlant" Type="Self.tblPlant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblArea">
+        <PropertyRef Name="Area_ID" />
+      </Principal>
+      <Dependent Role="tblPlant">
+        <PropertyRef Name="Area_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblQuesti__User___145C0A3F">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+    <End Role="tblQuestion" Type="Self.tblQuestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblQuestion">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblRespon__Answe__20C1E124">
+    <End Role="tblAnswer" Type="Self.tblAnswer" Multiplicity="0..1" />
+    <End Role="tblResponse" Type="Self.tblResponse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblAnswer">
+        <PropertyRef Name="Answer_ID" />
+      </Principal>
+      <Dependent Role="tblResponse">
+        <PropertyRef Name="Answer_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblRespon__Quest__1FCDBCEB">
+    <End Role="tblQuestion" Type="Self.tblQuestion" Multiplicity="0..1" />
+    <End Role="tblResponse" Type="Self.tblResponse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblQuestion">
+        <PropertyRef Name="Question_ID" />
+      </Principal>
+      <Dependent Role="tblResponse">
+        <PropertyRef Name="Question_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblRespon__User___1ED998B2">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+    <End Role="tblResponse" Type="Self.tblResponse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblResponse">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblUser_P__User___023D5A04">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+    <End Role="tblUser_Preferred_Categories" Type="Self.tblUser_Preferred_Categories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblUser_Preferred_Categories">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GuardenDBModelStoreContainer">
+    <EntitySet Name="tblAnswer" EntityType="Self.tblAnswer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblArea" EntityType="Self.tblArea" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblArea_Photo_Archive" EntityType="Self.tblArea_Photo_Archive" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblPlant" EntityType="Self.tblPlant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblPlant_Photo_Archive" EntityType="Self.tblPlant_Photo_Archive" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblQuestion" EntityType="Self.tblQuestion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblResponse" EntityType="Self.tblResponse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUser_Preferred_Categories" EntityType="Self.tblUser_Preferred_Categories" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__tblAnswer__Quest__1A14E395" Association="Self.FK__tblAnswer__Quest__1A14E395">
+      <End Role="tblQuestion" EntitySet="tblQuestion" />
+      <End Role="tblAnswer" EntitySet="tblAnswer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblAnswer__User___1920BF5C" Association="Self.FK__tblAnswer__User___1920BF5C">
+      <End Role="tblUser" EntitySet="tblUser" />
+      <End Role="tblAnswer" EntitySet="tblAnswer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblArea__User_ID__07020F21" Association="Self.FK__tblArea__User_ID__07020F21">
+      <End Role="tblUser" EntitySet="tblUser" />
+      <End Role="tblArea" EntitySet="tblArea" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblArea_P__Area___300424B4" Association="Self.FK__tblArea_P__Area___300424B4">
+      <End Role="tblArea" EntitySet="tblArea" />
+      <End Role="tblArea_Photo_Archive" EntitySet="tblArea_Photo_Archive" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblPlant___Plant__37A5467C" Association="Self.FK__tblPlant___Plant__37A5467C">
+      <End Role="tblPlant" EntitySet="tblPlant" />
+      <End Role="tblPlant_Photo_Archive" EntitySet="tblPlant_Photo_Archive" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblPlant__Area_I__0DAF0CB0" Association="Self.FK__tblPlant__Area_I__0DAF0CB0">
+      <End Role="tblArea" EntitySet="tblArea" />
+      <End Role="tblPlant" EntitySet="tblPlant" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblQuesti__User___145C0A3F" Association="Self.FK__tblQuesti__User___145C0A3F">
+      <End Role="tblUser" EntitySet="tblUser" />
+      <End Role="tblQuestion" EntitySet="tblQuestion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblRespon__Answe__20C1E124" Association="Self.FK__tblRespon__Answe__20C1E124">
+      <End Role="tblAnswer" EntitySet="tblAnswer" />
+      <End Role="tblResponse" EntitySet="tblResponse" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblRespon__Quest__1FCDBCEB" Association="Self.FK__tblRespon__Quest__1FCDBCEB">
+      <End Role="tblQuestion" EntitySet="tblQuestion" />
+      <End Role="tblResponse" EntitySet="tblResponse" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblRespon__User___1ED998B2" Association="Self.FK__tblRespon__User___1ED998B2">
+      <End Role="tblUser" EntitySet="tblUser" />
+      <End Role="tblResponse" EntitySet="tblResponse" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblUser_P__User___023D5A04" Association="Self.FK__tblUser_P__User___023D5A04">
+      <End Role="tblUser" EntitySet="tblUser" />
+      <End Role="tblUser_Preferred_Categories" EntitySet="tblUser_Preferred_Categories" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

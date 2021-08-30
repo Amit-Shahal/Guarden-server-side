@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GuardenDBModelStoreContainer" CdmEntityContainer="GuardenDB">
+    <EntitySetMapping Name="tblAnswers">
+      <EntityTypeMapping TypeName="GuardenDBModel.tblAnswer">
+        <MappingFragment StoreEntitySet="tblAnswer">
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Answer_ID" ColumnName="Answer_ID" />
+          <ScalarProperty Name="Answer_Content" ColumnName="Answer_Content" />
+          <ScalarProperty Name="Answer_Votes" ColumnName="Answer_Votes" />
+          <ScalarProperty Name="Answer_Photo" ColumnName="Answer_Photo" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Question_ID" ColumnName="Question_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAreas">
+      <EntityTypeMapping TypeName="GuardenDBModel.tblArea">
+        <MappingFragment StoreEntitySet="tblArea">
+          <ScalarProperty Name="Clicks" ColumnName="Clicks" />
+          <ScalarProperty Name="isInDoor" ColumnName="isInDoor" />
+          <ScalarProperty Name="sunExposure" ColumnName="sunExposure" />
+          <ScalarProperty Name="Area_ID" ColumnName="Area_ID" />
+          <ScalarProperty Name="Area_Name" ColumnName="Area_Name" />
+          <ScalarProperty Name="Area_Location" ColumnName="Area_Location" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblArea_Photo_Archive">
+      <EntityTypeMapping TypeName="GuardenDBModel.tblArea_Photo_Archive">
+        <MappingFragment StoreEntitySet="tblArea_Photo_Archive">
+          <ScalarProperty Name="Area_Photo" ColumnName="Area_Photo" />
+          <ScalarProperty Name="Area_ID" ColumnName="Area_ID" />
+          <ScalarProperty Name="Photo_ID" ColumnName="Photo_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPlants">
+      <EntityTypeMapping TypeName="GuardenDBModel.tblPlant">
+        <MappingFragment StoreEntitySet="tblPlant">
+          <ScalarProperty Name="PlantWaterCycle" ColumnName="PlantWaterCycle" />
+          <ScalarProperty Name="LastWatering" ColumnName="LastWatering" />
+          <ScalarProperty Name="Clicks" ColumnName="Clicks" />
+          <ScalarProperty Name="Plant_ID" ColumnName="Plant_ID" />
+          <ScalarProperty Name="Plant_Name" ColumnName="Plant_Name" />
+          <ScalarProperty Name="Plant_Category" ColumnName="Plant_Category" />
+          <ScalarProperty Name="Plant_Lifecycle_Level" ColumnName="Plant_Lifecycle_Level" />
+          <ScalarProperty Name="Area_ID" ColumnName="Area_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPlant_Photo_Archive">
+      <EntityTypeMapping TypeName="GuardenDBModel.tblPlant_Photo_Archive">
+        <MappingFragment StoreEntitySet="tblPlant_Photo_Archive">
+          <ScalarProperty Name="LifeCycle" ColumnName="LifeCycle" />
+          <ScalarProperty Name="dateOfCreate" ColumnName="dateOfCreate" />
+          <ScalarProperty Name="Plant_Photo" ColumnName="Plant_Photo" />
+          <ScalarProperty Name="Plant_ID" ColumnName="Plant_ID" />
+          <ScalarProperty Name="Photo_ID" ColumnName="Photo_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblQuestions">
+      <EntityTypeMapping TypeName="GuardenDBModel.tblQuestion">
+        <MappingFragment StoreEntitySet="tblQuestion">
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Question_ID" ColumnName="Question_ID" />
+          <ScalarProperty Name="Question_Content" ColumnName="Question_Content" />
+          <ScalarProperty Name="Question_Votes" ColumnName="Question_Votes" />
+          <ScalarProperty Name="Question_Photo" ColumnName="Question_Photo" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblResponses">
+      <EntityTypeMapping TypeName="GuardenDBModel.tblResponse">
+        <MappingFragment StoreEntitySet="tblResponse">
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Response_ID" ColumnName="Response_ID" />
+          <ScalarProperty Name="Response_Content" ColumnName="Response_Content" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Question_ID" ColumnName="Question_ID" />
+          <ScalarProperty Name="Answer_ID" ColumnName="Answer_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsers">
+      <EntityTypeMapping TypeName="GuardenDBModel.tblUser">
+        <MappingFragment StoreEntitySet="tblUser">
+          <ScalarProperty Name="ProfileImg" ColumnName="ProfileImg" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="OTP" ColumnName="OTP" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+          <ScalarProperty Name="Preferred_Watering_Timing" ColumnName="Preferred_Watering_Timing" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUser_Preferred_Categories">
+      <EntityTypeMapping TypeName="GuardenDBModel.tblUser_Preferred_Categories">
+        <MappingFragment StoreEntitySet="tblUser_Preferred_Categories">
+          <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
